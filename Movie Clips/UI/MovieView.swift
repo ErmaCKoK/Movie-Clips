@@ -49,6 +49,26 @@ private class MovieImageView: UIImageView {
             self.setScale()
         }
     }
+    
+    // MARK: - Init
+    convenience init() {
+        self.init(frame: CGRect.zero)
+        self.commonInit()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.commonInit()
+    }
+    
+    private func commonInit() {
+        self.contentMode = .scaleAspectFill
+    }
 
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -124,6 +144,7 @@ class MovieView: UIView, UIGestureRecognizerDelegate {
     private var offsreenImageView = MovieImageView()
     private var offsreenIndex: Int?
     
+    private var isLandscape: Bool = false
     private var panGesture: UIPanGestureRecognizer!
     
     // MARK: - Init
@@ -142,6 +163,13 @@ class MovieView: UIView, UIGestureRecognizerDelegate {
         self.setupGesture()
         self.setupPlayerView()
         self.setupImageViews()
+        
+        self.isLandscape = UIApplication.shared.statusBarOrientation.isLandscape
+        NotificationCenter.default.addObserver(self, selector: #selector(willChangeOrientation(_:)), name: .UIApplicationWillChangeStatusBarOrientation, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .UIApplicationWillChangeStatusBarOrientation, object: nil)
     }
     
     // MARK: - Setup subviews
@@ -156,30 +184,23 @@ class MovieView: UIView, UIGestureRecognizerDelegate {
     
     private func setupPlayerView() {
         let frame = CGRect(x: 0, y: 172, width: self.bounds.width, height: 196)
-        self.playerViews.forEach({ $0.frame = frame })
         
-        self.addSubview(self.playerViews.previous)
-        self.addSubview(self.playerViews.current)
-        self.addSubview(self.playerViews.next)
+        self.playerViews.forEach({
+            $0.frame = frame
+            self.addSubview($0)
+        })
     }
     
     private let imageSize = CGSize(width: 113, height: 150)
     private func setupImageViews() {
         let frame = CGRect(x: 0, y: self.bounds.height - imageSize.height - 34, width: imageSize.width, height: imageSize.height)
         
-        self.imageViews.forEach({ $0.frame = frame })
-        
-        self.imageViews.previous.contentMode = .scaleAspectFill
-        self.addSubview(self.imageViews.previous)
-        
-        self.imageViews.current.contentMode = .scaleAspectFill
-        self.addSubview(self.imageViews.current)
-        
-        self.imageViews.next.contentMode = .scaleAspectFill
-        self.addSubview(self.imageViews.next)
+        self.imageViews.forEach({
+            $0.frame = frame
+            self.addSubview($0)
+        })
         
         self.offsreenImageView.frame = frame
-        self.offsreenImageView.contentMode = .scaleAspectFill
         self.addSubview(offsreenImageView)
     }
     
@@ -194,6 +215,14 @@ class MovieView: UIView, UIGestureRecognizerDelegate {
         var playerFrame = self.playerViews.current.frame
         playerFrame.origin.y = 172
         playerFrame.size.width = self.bounds.width
+        playerFrame.size.height = 196
+        
+        if self.isLandscape {
+            playerFrame.origin.y = 0
+            playerFrame.size.width = self.bounds.width
+            playerFrame.size.height = self.bounds.height
+        }
+        
         self.playerViews.forEach({ $0.frame = playerFrame })
         
         var imageFrame = CGRect.zero
@@ -202,10 +231,12 @@ class MovieView: UIView, UIGestureRecognizerDelegate {
         self.imageViews.forEach({ view in
             view.transform = .identity
             view.frame = imageFrame
+            view.isHidden = self.isLandscape
         })
         
         self.offsreenImageView.transform = .identity
         self.offsreenImageView.frame = imageFrame
+        self.offsreenImageView.isHidden = self.isLandscape
         
         self.layoutViews()
     }
@@ -234,8 +265,7 @@ class MovieView: UIView, UIGestureRecognizerDelegate {
             self.offsreenImageView.setImage(with: offMovie?.imageUrl)
         }
         
-        
-        self.offsreenImageView.isHidden = currentFrame.minX == 0
+        self.offsreenImageView.isHidden = currentFrame.minX == 0 || self.isLandscape
         self.offsreenImageView.center.x = self.imageViews.current.center.x + (self.bounds.width * CGFloat(offscreenPosition))
     }
     
@@ -389,4 +419,12 @@ class MovieView: UIView, UIGestureRecognizerDelegate {
         gesture.setTranslation(.zero, in: self)
     }
     
+    // MARK: - Notification selector
+    
+    @objc func willChangeOrientation(_ notification: Notification) {
+        guard let orinetation = notification.userInfo?[UIApplicationStatusBarOrientationUserInfoKey] as? Int else { return }
+        
+        self.isLandscape = UIInterfaceOrientation(rawValue: orinetation)?.isLandscape ?? false
+        self.didSetFrame()
+    }
 }

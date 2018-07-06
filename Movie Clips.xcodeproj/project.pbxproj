@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2258DAB720EDDC0E002235AC /* MovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258DAB620EDDC0E002235AC /* MovieView.swift */; };
+		2258DABA20EDE92B002235AC /* UIImageView+Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258DAB920EDE92B002235AC /* UIImageView+Download.swift */; };
 		22FB840420E8ACFD008EDB59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB83F920E8ACFD008EDB59 /* AppDelegate.swift */; };
-		22FB840620E8ACFD008EDB59 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB83FD20E8ACFD008EDB59 /* ViewController.swift */; };
+		22FB840620E8ACFD008EDB59 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB83FD20E8ACFD008EDB59 /* MovieViewController.swift */; };
 		22FB840720E8ACFD008EDB59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FB83FE20E8ACFD008EDB59 /* LaunchScreen.storyboard */; };
 		22FB840820E8ACFD008EDB59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FB840020E8ACFD008EDB59 /* Main.storyboard */; };
 		22FB840920E8ACFD008EDB59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22FB840320E8ACFD008EDB59 /* Assets.xcassets */; };
@@ -20,10 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2258DAB620EDDC0E002235AC /* MovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieView.swift; sourceTree = "<group>"; };
+		2258DAB920EDE92B002235AC /* UIImageView+Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Download.swift"; sourceTree = "<group>"; };
 		22FB83E220E8A33C008EDB59 /* Movie Clips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie Clips.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22FB83F920E8ACFD008EDB59 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22FB83FB20E8ACFD008EDB59 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		22FB83FD20E8ACFD008EDB59 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		22FB83FD20E8ACFD008EDB59 /* MovieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		22FB83FF20E8ACFD008EDB59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22FB840120E8ACFD008EDB59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		22FB840320E8ACFD008EDB59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -93,9 +97,11 @@
 		22FB83FC20E8ACFD008EDB59 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				22FB83FD20E8ACFD008EDB59 /* ViewController.swift */,
+				22FB83FD20E8ACFD008EDB59 /* MovieViewController.swift */,
 				22FB840020E8ACFD008EDB59 /* Main.storyboard */,
 				22FB841520E8B669008EDB59 /* MoviePlayerView.swift */,
+				2258DAB620EDDC0E002235AC /* MovieView.swift */,
+				2258DAB920EDE92B002235AC /* UIImageView+Download.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -201,8 +207,10 @@
 				22FB841620E8B669008EDB59 /* MoviePlayerView.swift in Sources */,
 				22FB840C20E8AD61008EDB59 /* Networking.swift in Sources */,
 				22FB841420E8B25C008EDB59 /* Request.swift in Sources */,
-				22FB840620E8ACFD008EDB59 /* ViewController.swift in Sources */,
+				2258DABA20EDE92B002235AC /* UIImageView+Download.swift in Sources */,
+				22FB840620E8ACFD008EDB59 /* MovieViewController.swift in Sources */,
 				22FB841020E8B15F008EDB59 /* MoviesRequest.swift in Sources */,
+				2258DAB720EDDC0E002235AC /* MovieView.swift in Sources */,
 				22FB840420E8ACFD008EDB59 /* AppDelegate.swift in Sources */,
 				22FB841220E8B16A008EDB59 /* Movie.swift in Sources */,
 			);

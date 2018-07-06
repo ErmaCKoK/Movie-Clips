@@ -7,10 +7,9 @@
 //
 
 import UIKit
+import MiniGalleryUI
 
 class MovieViewController: UIViewController, MovieViewDataSource {
-
-    @IBOutlet weak var moviePlayerView: MoviePlayerView!
     
     var movieView: MovieView {
         return self.view as! MovieView
@@ -41,7 +40,7 @@ class MovieViewController: UIViewController, MovieViewDataSource {
         return self.clips.count
     }
     
-    func movieView(_ movieView: MovieView, movieAt index: Int) -> Movie {
+    func movieView(_ movieView: MovieView, movieAt index: Int) -> MovieModel {
         return self.clips[index]
     }
     

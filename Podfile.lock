@@ -1,0 +1,16 @@
+PODS:
+  - MiniGalleryUI (0.1.0)
+
+DEPENDENCIES:
+  - MiniGalleryUI (from `./MiniGalleryUI/`)
+
+EXTERNAL SOURCES:
+  MiniGalleryUI:
+    :path: "./MiniGalleryUI/"
+
+SPEC CHECKSUMS:
+  MiniGalleryUI: ee85f187166edf8807ea0b4fed001fab2a770f1b
+
+PODFILE CHECKSUM: c2a409ebacba73ef9a442d831fddefcea880fdf7
+
+COCOAPODS: 1.5.0

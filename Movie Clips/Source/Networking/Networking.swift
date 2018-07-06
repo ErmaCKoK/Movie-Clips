@@ -34,13 +34,6 @@ class Networking: NSObject {
     private var session = URLSession.shared
     private var oneRequestAtATimeQueue = [String: URLSessionDataTask]()
     
-    private(set) lazy var imageSession: URLSession = {
-        let configuration = URLSessionConfiguration.default
-        configuration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
-        configuration.urlCache = .shared
-        return URLSession(configuration: configuration)
-    }()
-    
     /// For performing an async connection to URLRequest on a background worker thread.
     /// The completion block will be executed on URLSession copletion thread.
     ///
@@ -108,33 +101,6 @@ extension Networking {
             }
             
         }
-    }
-    
-    @discardableResult
-    static func downloadImage(at url: String, completion: @escaping (_ image: UIImage?) -> Void) -> URLSessionDataTask? {
-        
-        guard let url = URL(string: url) else {
-            completion(nil)
-            return nil
-        }
-        
-        let request = NSMutableURLRequest(url: url, cachePolicy: Networking.shared.imageSession.configuration.requestCachePolicy, timeoutInterval: 15)
-        request.addValue("image/*", forHTTPHeaderField: "Accept")
-        
-        let task = Networking.shared.imageSession.dataTask(with: url, completionHandler: { (data, responce, error) in
-            
-            var image: UIImage? = nil
-            if let data = data {
-                image = UIImage(data: data)
-            }
-            
-            DispatchQueue.main.async {
-                completion(image)
-            }
-        })
-        
-        task.resume()
-        return task
     }
     
 }

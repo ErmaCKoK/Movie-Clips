@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import MiniGalleryUI
 
-class Movie: Mapped {
+class Movie: Mapped, MovieModel {
     
     private(set) var id: String
     

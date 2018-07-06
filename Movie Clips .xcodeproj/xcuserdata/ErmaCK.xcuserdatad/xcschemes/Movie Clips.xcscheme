@@ -17,7 +17,7 @@
                BlueprintIdentifier = "22FB83E120E8A33C008EDB59"
                BuildableName = "Movie Clips.app"
                BlueprintName = "Movie Clips"
-               ReferencedContainer = "container:Movie Clips.xcodeproj">
+               ReferencedContainer = "container:Movie Clips .xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
             BlueprintIdentifier = "22FB83E120E8A33C008EDB59"
             BuildableName = "Movie Clips.app"
             BlueprintName = "Movie Clips"
-            ReferencedContainer = "container:Movie Clips.xcodeproj">
+            ReferencedContainer = "container:Movie Clips .xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -58,7 +58,7 @@
             BlueprintIdentifier = "22FB83E120E8A33C008EDB59"
             BuildableName = "Movie Clips.app"
             BlueprintName = "Movie Clips"
-            ReferencedContainer = "container:Movie Clips.xcodeproj">
+            ReferencedContainer = "container:Movie Clips .xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -77,7 +77,7 @@
             BlueprintIdentifier = "22FB83E120E8A33C008EDB59"
             BuildableName = "Movie Clips.app"
             BlueprintName = "Movie Clips"
-            ReferencedContainer = "container:Movie Clips.xcodeproj">
+            ReferencedContainer = "container:Movie Clips .xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
